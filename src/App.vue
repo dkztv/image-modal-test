@@ -1,26 +1,35 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <AttachFilesSVG
+      @click="openFileAttachModal = !openFileAttachModal"/>
+  <MultipleImagesPreview
+      v-if="openFileAttachModal"
+      @closeuploadmodal="openFileAttachModal = !openFileAttachModal"
+  />
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import MultipleImagesPreview from '@/components/MultipleImagesPreview.vue';
+import AttachFilesSVG from "@/components/svg/AttachFilesSVG.vue";
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
-  }
+    MultipleImagesPreview,
+    AttachFilesSVG
+  },
+  data() {
+    return {
+      openFileAttachModal: false
+    }
+  },
 }
 </script>
 
 <style>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Source Sans Pro', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
 }
 </style>
